@@ -13,7 +13,8 @@ class Lists extends Model
     );
     public function getData()
     {
-        return ('(' . $this->content . ')');
+        // return ('(' . $this->content . ')');
+        return $this->id . (' . $this->content . ');
     }
     protected $table = 'list';
 }

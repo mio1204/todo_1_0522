@@ -57,21 +57,27 @@
       {{$item->created_at}}
     </td>
     <td>
-      {{$item->content}}
+      <input type="text" name="content" value="{{$item->content}}">
     </td>
+
+    <!-- 更新＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋ -->
     <td>
-      <button>更新</button>
-    </td>
-    <td>
-      <form action="{{route('/todo/delete'), $lists->id}}" method="POST">
+      <form action="/todo/update" method="POST">
         @csrf
-        @method('delete')
+        <input type="submit" value="更新">
+        <input type="hidden" name="id" value="{{$item->id}}">
+      </form>
+    </td>
+
+    <!-- 削除＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋ -->
+    <td>
+      <form action="/todo/delete" method="POST">
+        @csrf
         <input type="submit" value="削除">
+        <input type="hidden" name="id" value="{{ $item->id }}">
       </form>
     </td>
   </tr>
   @endforeach
 </table>
 @endsection
-
-<!-- 更新＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋ -->
